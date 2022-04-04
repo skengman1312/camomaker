@@ -1,0 +1,4 @@
+
+    [console_scripts]
+    sewar = sewar.command_line:main
+    

@@ -1,0 +1,16 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+sewar/__init__.py
+sewar/command_line.py
+sewar/full_ref.py
+sewar/no_ref.py
+sewar/utils.py
+sewar.egg-info/PKG-INFO
+sewar.egg-info/SOURCES.txt
+sewar.egg-info/dependency_links.txt
+sewar.egg-info/entry_points.txt
+sewar.egg-info/not-zip-safe
+sewar.egg-info/requires.txt
+sewar.egg-info/top_level.txt
