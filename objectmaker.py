@@ -295,6 +295,7 @@ if __name__ == '__main__':
     # print(snow.uqi())
     snow.layer_perlin(spotting=(2, 0.1), octaves=(4, 4))
     snow.show()
+    #froam di github
 
     # snow.layer_perlin(spotting=(2,0.1))
     # for n in range(3,6):
