@@ -286,8 +286,8 @@ class camo:
 
 
 if __name__ == '__main__':
-    snow = camo("data/aforest1.jpg")
-    snow.extract_colors(n=3, colspace="HSV", show=True, save = True)
+    snow = camo("data/forest.jpg")
+    snow.extract_colors(n=4, colspace="HSV", show=True, save = True)
 
     # snow.make_perlin(octaves=[16,8],ms=0.05, colspace="HSV")
 
@@ -295,7 +295,6 @@ if __name__ == '__main__':
     # print(snow.uqi())
     snow.layer_perlin(spotting=(2, 0.1), octaves=(4, 4))
     snow.show()
-    #froam di github
 
     # snow.layer_perlin(spotting=(2,0.1))
     # for n in range(3,6):
