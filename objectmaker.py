@@ -287,7 +287,7 @@ class camo:
 
 if __name__ == '__main__':
     snow = camo("data/forest.jpg")
-    snow.extract_colors(n=4, colspace="HSV", show=True, save = True)
+    snow.extract_colors(n=3, colspace="HSV", show=True, load = True)
 
     # snow.make_perlin(octaves=[16,8],ms=0.05, colspace="HSV")
 
