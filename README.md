@@ -8,7 +8,7 @@ In order to extract the colors from the input image the `extract_colors(self, n,
 `n` is the number of colors to extract; the defult color space is HSV however RGB is also supported but yileds worst results.
 ### Pattern generation
 In order to generate a proper pattern you should use the  `layer_perlin(self, octaves=(16, 8), spotting=[], test=False)` method.
-The octaves parameters is a tuple of two integers which represent the periods of the noise to be generated along the two dimentional axes.
-The spotting parameter is a list used to set the parameters for addittion of spotting to the pattern, it accepts values in the form of  [number of colors(int), fraction(float)], if empty no spotting will be performed.
+The `octaves` parameters is a tuple of two integers which represent the periods of the noise to be generated along the two dimentional axes.
+The `spotting` parameter is a list used to set the parameters for addittion of spotting to the pattern, it accepts values in the form of  `[number of colors(int), fraction(float)]`, if empty no spotting will be performed.
 
 Please note that the only proper method to generate patterns is `layer_perlin`; al the other methods, including optimization ones yiled suboptimal results and included just for the sake of clarity and compleatness.
