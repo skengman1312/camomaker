@@ -286,27 +286,11 @@ class camo:
 
 
 if __name__ == '__main__':
+    #demo with large forest image
     snow = camo("data/forest.jpg")
+    #first we have to run the color extractor
     snow.extract_colors(n=3, colspace="HSV", show=True, load = True)
-
-    # snow.make_perlin(octaves=[16,8],ms=0.05, colspace="HSV")
-
-    #snow.layer_perlin_3d()
-    # print(snow.uqi())
+    #now we run the pattern designer asking it to apply spotting the 10%(0.1) of the surface using the two least occurring colors
     snow.layer_perlin(spotting=(2, 0.1), octaves=(4, 4))
     snow.show()
 
-    # snow.layer_perlin(spotting=(2,0.1))
-    # for n in range(3,6):
-    #     print(f"n:{n}")
-    #     print("HSV")
-    #     snow = camo(["data/snow.jpg"])
-    #     snow.extract_colors(n=n, colspace="HSV")
-    #     snow.make_perlin(colspace="HSV", octaves= (32,8))
-    #     snow.uqi()
-    #
-    #     print("RGB")
-    #     snow = camo(["data/snow.jpg"])
-    #     snow.extract_colors(n=n, colspace="RGB")
-    #     snow.make_perlin(colspace="RGB")
-    #     snow.uqi()
