@@ -1,7 +1,7 @@
 # Perlin Noise Camouflage Algorithm 
 This algorithm provides the means of generatitng camofulage patterns based on the Perlin fractal noise from an input image.
 ## Usage 
-In order to properly use the algorithm the `camo` class must be instatiated with the path to the input image.
+In order to properly use the algorithm the `camo` class must be instantiated with the path to the input image.
 The input image should be in the `./data/` directory.
 ### Color extraction 
 In order to extract the colors from the input image the `extract_colors(self, n, show=False, save=True, load=False, colspace="HSV")` must be called.
