@@ -1,5 +1,6 @@
 # Perlin Noise Camouflage Algorithm 
 This algorithm provides the means of generatitng camofulage patterns based on the Perlin fractal noise from an input image.
+The `main.py` file contains a scratch of the project in functional programming and it's deprecated, please use the `objectmaker.py` script.
 ## Usage 
 In order to properly use the algorithm the `camo` class must be instantiated with the path to the input image.
 The input image should be in the `./data/` directory.
