@@ -1,0 +1,6 @@
+numpy~=1.21.5
+matplotlib~=3.5.1
+Pillow~=9.0.1
+scipy~=1.7.3
+scikit-learn~=1.0.2
+sewar~=0.4.4
