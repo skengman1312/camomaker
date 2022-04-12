@@ -5,7 +5,7 @@ The `main.py` file contains a scratch of the project in functional programming a
 In order to properly use the algorithm the `camo` class must be instantiated with the path to the input image.
 The input image should be in the `./data/` directory.
 ### Color extraction 
-In order to extract the colors from the input image the `extract_colors(self, n, show=False, save=True, load=False, colspace="HSV")` must be called.
+In order to extract the colors from the input image the `extract_colors(self, n, show=False, save=True, load=False, colspace="HSV")` method must be called.
 `n` is the number of colors to extract; the defult color space is HSV however RGB is also supported but yileds worst results.
 ### Pattern generation
 In order to generate a proper pattern you should use the  `layer_perlin(self, octaves=(16, 8), spotting=[], test=False)` method.
