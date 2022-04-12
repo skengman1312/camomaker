@@ -87,9 +87,9 @@ class camo:
         im.show()
 
     # pattern generating function using a single layer of 2D perlin fractal noise, more in the report
-    def make_perlin(self, octaves=(16, 8), colspace="RGB", test=False, ms=0):
+    def make_perlin(self, res=(16, 8), colspace="RGB", test=False, ms=0):
         np.random.seed(0)
-        noise = generate_fractal_noise_2d((1024 * 2, 1024 * 2), octaves, 6, tileable=(True, True))
+        noise = generate_fractal_noise_2d((1024 * 2, 1024 * 2), res, 6, tileable=(True, True))
         noise = normalize(noise)
         mean, std = norm.fit(noise)
         if ms:  # multipatch spotting support
@@ -136,7 +136,7 @@ class camo:
 
     # pattern generating function using n layers of fractal noise
 
-    def layer_perlin(self, octaves=(16, 8), spotting=[], test=False):
+    def layer_perlin(self, res=(16, 8), spotting=[], test=False):
         colordict = dict([[self.perc[n], self.colors[n].tolist()] for n in range(len(self.perc))])
         colordict = sorted(colordict.items(), reverse=True)
         q = np.cumsum([i[0] for i in colordict])
@@ -144,7 +144,7 @@ class camo:
 
         for f in range(len(self.colors) - 1, -1, -1):
             np.random.seed(1312 + f)
-            noise = generate_fractal_noise_2d((1024 * 2, 1024 * 2), octaves, 6, tileable=(True, True))
+            noise = generate_fractal_noise_2d((1024 * 2, 1024 * 2), res, 6, tileable=(True, True))
             noise = normalize(noise)
             alpha = np.zeros(noise.shape)
             mean, std = norm.fit(noise)
@@ -171,7 +171,7 @@ class camo:
             q = [(1 / ncol) * size * (n + 1) for n in range(ncol)]
             for f in range(ncol):
                 np.random.seed(1312 + f)
-                noise = generate_fractal_noise_2d((1024 * 2, 1024 * 2), octaves, 6, tileable=(True, True))
+                noise = generate_fractal_noise_2d((1024 * 2, 1024 * 2), res, 6, tileable=(True, True))
                 noise = normalize(noise)
                 alpha = np.zeros(noise.shape)
                 mean, std = norm.fit(noise)
@@ -197,7 +197,7 @@ class camo:
         if not test:
             self.save(f"{self.name}.png")
 
-    def layer_perlin_3d(self, octaves=(16, 8), spotting=[], test=False):
+    def layer_perlin_3d(self, res=(16, 8), spotting=[], test=False):
         np.random.seed(1312)
         colordict = dict([[self.perc[n], self.colors[n].tolist()] for n in range(len(self.perc))])
         colordict = sorted(colordict.items(), reverse=True)
@@ -231,7 +231,7 @@ class camo:
         if not test:
             self.save(f"{self.name}_3d.png")
 
-    # octaves hyperparameter automatic selection function for simple and layered perlin patterns , however not optimal,
+    # res hyperparameter automatic selection function for simple and layered perlin patterns , however not optimal,
     # they are better when hand picked.
 
     def optimize_perlin(self, n=5, ncol=3, ms=[]):
@@ -245,16 +245,16 @@ class camo:
         for d in dd:
 
             d.sort(reverse=True)
-            tcamo.make_perlin(octaves=d, test=True, ms=ms)
+            tcamo.make_perlin(res=d, test=True, ms=ms)
             print("\n\n\n___\n")
-            print(f"octaves: {d}")
+            print(f"res: {d}")
             print("tcamo.uqi", tcamo.uqi())
             print("uqi_score", uqi_score)
             tuqi = tcamo.uqi()
             if tuqi > uqi_score:
                 uqi_score = tuqi
                 dstar = d  # save best camo
-        tcamo.make_perlin(octaves=dstar, ms=ms)
+        tcamo.make_perlin(res=dstar, ms=ms)
         self.camo = tcamo.camo
         print(f"best camo uqi: {tcamo.uqi()}")
         print(f"d*: {dstar}")
@@ -270,8 +270,8 @@ class camo:
         for d in dd:
             print("\n\n\n___\n")
             d.sort(reverse=True)
-            print(f"octaves: {d}")
-            tcamo.layer_perlin(octaves=d, test=True, spotting=spotting)
+            print(f"res: {d}")
+            tcamo.layer_perlin(res=d, test=True, spotting=spotting)
             tuqi = tcamo.uqi()
             print("tcamo uqi: ", tuqi)
             print("uqi_score", uqi_score)
@@ -279,7 +279,7 @@ class camo:
             if tuqi > uqi_score:
                 uqi_score = tuqi
                 dstar = d  # save best camo
-        tcamo.layer_perlin(octaves=dstar, spotting=spotting)
+        tcamo.layer_perlin(res=dstar, spotting=spotting)
         self.camo = tcamo.camo
         print(f"best camo uqi: {tcamo.uqi()}")
         print(f"d*: {dstar}")
@@ -291,6 +291,6 @@ if __name__ == '__main__':
     #first we have to run the color extractor
     forest.extract_colors(n=3, colspace="HSV", show=True, load = True)
     #now we run the pattern designer asking it to apply spotting the 10%(0.1) of the surface using the two least occurring colors
-    forest.layer_perlin(spotting=(2, 0.1), octaves=(4, 4))
+    forest.layer_perlin(spotting=(2, 0.1), res=(4, 4))
     forest.show()
 
