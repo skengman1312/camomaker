@@ -291,6 +291,6 @@ if __name__ == '__main__':
     #first we have to run the color extractor
     forest.extract_colors(n=3, colspace="HSV", show=True, load = True)
     #now we run the pattern designer asking it to apply spotting the 10%(0.1) of the surface using the two least occurring colors
-    forest.layer_perlin(spotting=(2, 0.1), res=(4, 4))
+    forest.layer_perlin(spotting=[2, 0.1], res=(4, 4))
     forest.show()
 
